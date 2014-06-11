@@ -1,0 +1,67 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>Potato</title>
+</head>
+<body>
+	<svg id='field' viewBox='0 0 800 600' preserveAspectRatio='xMidYMid' clip-path='url(#myClip)'>
+		<rect id='background' width='800' height='600'  />
+    <rect id='surfBoard' width='250' height='10' x='300' y='123' />
+    <circle id='face' cx="392" cy="80" r='20'  />
+    <ellipse id='leftEye' cx="386" cy="76" rx="5" ry="7" />
+    <ellipse id='rightEye' cx="399" cy="76" rx="5" ry="7"  />
+    <ellipse id='leftEyeColor' cx="386" cy="76" rx="2" ry="2.5"  />
+    <ellipse id='rightEyeColor' cx="399" cy="76" rx="2" ry="2.5" />
+    <rect id='rightHair' width='50' height='14'  transform="translate(30) rotate(45 125 470)" />
+    <rect id='leftHair' width='50' height='14'  transform="translate(30) rotate(-30 300 -560)">
+    </rect>
+    <rect id='leftMouth' width='10' height='4'  transform="translate(30) rotate(45 79 478)" />
+    <rect id='rightMouth' width='10' height='4'  transform="translate(30) rotate(-30 345 -625)" /> 
+    <rect id='torso1' width='42.5' height='15' x='370' y='95' />
+    <rect id='torso2' width='30' height='15' x='376' y='109' />
+    
+    <!-- small bad guy start-->
+    
+    <circle id='smallBadFace' cx="342" cy="80" r='20'  />
+    <line id='smallBadLeftEyeBrow' x1='332' x2='340' y1='64' y2='70' />
+    <line id='smallBadRightEyeBrow' x1='342' x2='350' y1='70' y2='64' />
+    <ellipse id='smallBadLeftEye' cx="336" cy="78" rx="5" ry="7" />
+    <ellipse id='smallBadRightEye' cx="349" cy="78" rx="5" ry="7"  />
+    <ellipse id='smallBadLeftEyeColor' cx="336" cy="80" rx="2" ry="2.5"  />
+    <ellipse id='smallBadRightEyeColor' cx="349" cy="80" rx="2" ry="2.5" />
+    <ellipse id='smallBadMouth' cx="343" cy="92" rx="7" ry="5"  />
+    <rect id='smallBadTorso1' width='42.5' height='15' x='320' y='98' />
+    <rect id='smallBadTorso2' width='30' height='15' x='326' y='109' />
+    <!-- small bad guy end-->
+
+    <!-- medium bad guy start-->
+    
+    <circle id='mediumBadFace' cx="470" cy="47" r='24'  />
+    <line id='smallBadLeftEyeBrow' x1='332' x2='340' y1='64' y2='70' />
+    <line id='smallBadRightEyeBrow' x1='342' x2='350' y1='70' y2='64' />
+    <ellipse id='mediumBadLeftEye' cx="336" cy="78" rx="5" ry="7" />
+    <ellipse id='mediumBadRightEye' cx="349" cy="78" rx="5" ry="7"  />
+    <ellipse id='smallBadLeftEyeColor' cx="336" cy="80" rx="2" ry="2.5"  />
+    <ellipse id='smallBadRightEyeColor' cx="349" cy="80" rx="2" ry="2.5" />
+    <ellipse id='smallBadMouth' cx="343" cy="92" rx="7" ry="5"  />
+    <rect id='smallBadTorso1' width='42.5' height='15' x='320' y='98' />
+    <rect id='smallBadTorso2' width='30' height='15' x='326' y='109' />
+    <!-- small bad guy end-->
+    
+		<rect id='tube1' width='28' height='100'  y='500' x='150'/>
+		<rect id='tubeTop1' width='28' height='15' ry='50' x='150' y='490' />
+		<rect id='tube2' width='34' height='180'  y='440' x='250'/>
+		<rect id='tubeTop2' width='34' height='15' ry='50' x='250' y='430' />
+		<circle id='ball2' r='12' cx='267' cy='429'/>
+		<circle id='fire2' r='7' cx='267' cy='500' onclick='startBall2()' />
+		<circle id='ball1' r='8' cx='164' cy='493'/>
+		<circle id='fire1' r='5' cx='164' cy='540' onclick='startBall1()' />
+	  <clipPath id="myClip" >
+      <rect = x='0' y='0' width='800' height='600'/>
+	  </clipPath>
+	</svg>
+	<script src='main.js'></script>
+</body>
+
+</html>

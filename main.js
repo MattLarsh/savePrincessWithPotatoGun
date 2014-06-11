@@ -3,6 +3,7 @@ var boxWidth = field.viewBox.baseVal.width;
 var boxHeight = field.viewBox.baseVal.height;
 var princess = {};
 var smallBad = {};
+var mediumBad = {};
 var ball = function(id){
   var e = document.getElementById(id);
   var r = {};
@@ -126,7 +127,28 @@ var smallBadRightEyeBrow = line('smallBadRightEyeBrow');
 smallBad.eyes = [smallBadMouth,smallBadRightEye,smallBadRightEyeColor,smallBadLeftEye,smallBadLeftEyeColor];
 smallBad.state = 'alive';
 // small bad finish
-var animateList = [smallBadMouth,smallBadRightEyeColor,smallBadLeftEyeColor,smallBadRightEye,smallBadLeftEye,smallBadFace,smallBadTorso2,smallBadTorso1,surfBoard, torso1, torso2, leftMouth, rightMouth,rightHair,leftHair,face,leftEye,rightEye,rightEyeColor,leftEyeColor];
+
+// medium bad start
+var mediumBadFace = ball('mediumBadFace');
+var mediumBadLeftEye = elipse('mediumBadLeftEye');
+var mediumBadRightEye = elipse('mediumBadRightEye');
+var mediumBadLeftEyeColor = elipse('mediumBadLeftEyeColor');
+var mediumBadRightEyeColor = elipse('mediumBadRightEyeColor');
+var mediumBadMouth = elipse('mediumBadMouth');
+var mediumBadLeftEyeBrow = line('mediumBadLeftEyeBrow');
+var mediumBadRightEyeBrow = line('mediumBadRightEyeBrow');
+var mediumBadTorso1 = rectangle('mediumBadTorso1');
+var mediumBadTorso2 = rectangle('mediumBadTorso2');
+var mediumBadHair1 = line('mediumBadHair1');
+var mediumBadHair2 = line('mediumBadHair2');
+var mediumBadHair3 = line('mediumBadHair3');
+mediumBad.eyes = [mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor];
+mediumBad.state = 'alive';
+
+
+
+
+var animateList = [mediumBadHair1,mediumBadHair2,mediumBadHair3,mediumBadTorso1,mediumBadTorso2,mediumBadRightEyeBrow,mediumBadLeftEyeBrow,mediumBadFace,mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor,smallBadMouth,smallBadRightEyeColor,smallBadLeftEyeColor,smallBadRightEye,smallBadLeftEye,smallBadFace,smallBadTorso2,smallBadTorso1,surfBoard, torso1, torso2, leftMouth, rightMouth,rightHair,leftHair,face,leftEye,rightEye,rightEyeColor,leftEyeColor];
 
 function startBall1(){
   ball1.dy = -5;
@@ -187,6 +209,21 @@ function freezeSmallBad(){
     }
   }
 }
+function freezeMediumBad(){
+  for(var i=0;i<mediumBad.pieces.length;i++){
+    mediumBad.pieces[i].dx = 0;
+    if(mediumBad.pieces[i].dx1 != null){
+      mediumBad.pieces[i].dx1 = 0;
+      mediumBad.pieces[i].dx2 = 0;
+    }
+    dir = 'stop';
+    if(mediumBad.state === 'alive'){
+      explodeMediumBad()
+      mediumBad.state = 'dead'
+    }
+  }
+}
+
 function explodePrincess(){
   for(var i=0;i<princess.eyes.length;i++){
     if(Math.random() > 0.5){
@@ -214,11 +251,26 @@ function explodeSmallBad(){
   setTimeout(smallBadRemove,4000);
 }
 
+function explodeMediumBad(){
+  for(var i=0;i<mediumBad.eyes.length;i++){
+    if(Math.random() > 0.5){
+      mediumBad.eyes[i].dx = 9 * Math.random();
+      mediumBad.eyes[i].dy = 9 * Math.random();
+    }
+    else{
+      mediumBad.eyes[i].dx = -10 * Math.random();
+      mediumBad.eyes[i].dy = -10 * Math.random();
+    }
+  }
+  setTimeout(mediumBadRemove,4000);
+}
+
 princess.strings = ['torso1', 'torso2', 'leftMouth', 'rightMouth','rightHair','leftHair','rightEye','leftEye','rightEyeColor','leftEyeColor'];
 princess.pieces = [torso1, torso2, leftMouth, rightMouth,rightHair,leftHair,leftEye,rightEye,rightEyeColor,leftEyeColor];
 smallBad.strings = ['smallBadLeftEyeBrow','smallBadRightEyeBrow','smallBadMouth','smallBadRightEyeColor','smallBadLeftEyeColor','smallBadRightEye','smallBadLeftEye','smallBadFace','smallBadTorso2','smallBadTorso1'];
 smallBad.pieces = [smallBadLeftEyeBrow,smallBadRightEyeBrow,smallBadMouth,smallBadRightEyeColor,smallBadLeftEyeColor,smallBadRightEye,smallBadLeftEye,smallBadFace,smallBadTorso2,smallBadTorso1];
-
+mediumBad.strings = ['mediumBadHair1','mediumBadHair2','mediumBadHair3','mediumBadTorso1','mediumBadTorso2','mediumBadLeftEyeBrow','mediumBadRightEyeBrow','mediumBadFace','mediumBadMouth','mediumBadRightEye','mediumBadRightEyeColor','mediumBadLeftEye','mediumBadLeftEyeColor'];
+mediumBad.pieces = [mediumBadHair1,mediumBadHair2,mediumBadHair3,mediumBadTorso1,mediumBadTorso2,mediumBadLeftEyeBrow,mediumBadRightEyeBrow,mediumBadFace,mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor];
 
 function princessRemove(){
   for(var i=0;i<princess.strings.length;i++){
@@ -232,7 +284,13 @@ function smallBadRemove(){
     one.remove();
   }
 }
-var lineList = [smallBadRightEyeBrow,smallBadLeftEyeBrow];
+function mediumBadRemove(){
+  for(var i=0;i<mediumBad.strings.length;i++){
+    var one = document.getElementById(mediumBad.strings[i]);
+    one.remove();
+  }
+}
+var lineList = [mediumBadHair1,mediumBadHair2,mediumBadHair3,smallBadRightEyeBrow,smallBadLeftEyeBrow,mediumBadLeftEyeBrow,mediumBadRightEyeBrow];
 var lineListLength = lineList.length;
 var animate = function(){
   
@@ -278,6 +336,8 @@ var animate = function(){
       lineList[i].dx2 = -2.5;
     }
   }
+  collideBallWith(ball1,mediumBadFace,freezeMediumBad);
+  collideBallWith(ball2,mediumBadFace,freezeMediumBad);
   collideBallWith(ball1,smallBadFace,freezeSmallBad);
   collideBallWith(ball2,smallBadFace,freezeSmallBad);
   collideBallWith(ball1,face,freezePrincess);

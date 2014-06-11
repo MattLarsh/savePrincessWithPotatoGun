@@ -111,8 +111,37 @@ body{
 	fill: #FFB1E5;
 }
 #mediumBadface{
-  fill: #d2bcad;
+  fill: #ffe0cc;
 }
 #mediumBadLeftEye{
-	
+	fill: white;
+}
+#mediumBadRightEye{
+	fill: white;
+}
+#mediumBadLeftEyeBrow{
+	stroke: brown;
+	stroke-width: 3;
+}
+#mediumBadRightEyeBrow{
+	stroke: brown;
+	stroke-width: 3;
+}
+#mediumBadTorso1{
+	fill: #054C8A;
+}
+#mediumBadTorso2{
+	fill: #054C8A;
+}
+#mediumBadHair1{
+	stroke: brown;
+	stroke-width: 7;
+}
+#mediumBadHair2{
+	stroke: brown;
+	stroke-width: 7;
+}
+#mediumBadHair3{
+	stroke: brown;
+	stroke-width: 7;
 }

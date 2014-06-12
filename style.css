@@ -4,6 +4,9 @@
 body{
 	background: #267B93;
 }
+#startGame{
+	opacity: 0;
+}
 #startRect{
 	fill: #267B93;
 }
@@ -210,7 +213,7 @@ body{
 .fireText{
 	fill: white;
 	font-size: 12px;
-  font-family: Georgia;
+  font-family: 'Open Sans';
 }
 .clear{
 	opacity: 0;

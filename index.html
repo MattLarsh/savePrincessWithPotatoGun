@@ -2,6 +2,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
 	<title>Potato</title>
 </head>
 <body>
@@ -36,19 +37,19 @@
     <!-- small bad guy end-->
 
     <!-- medium bad guy start-->
-    <circle id='mediumBadFace' cx="470" cy="47" r='24'  />
-    <ellipse id='mediumBadLeftEye' cx="461" cy="40" rx="5" ry="7" />
-    <ellipse id='mediumBadLeftEyeColor' cx="461" cy="40" rx="2" ry="2.5"/>
-    <line id='mediumBadLeftEyeBrow' x1='457' x2='465' y1='29' y2='33' />
-    <line id='mediumBadRightEyeBrow' x1='472' x2='480' y1='32' y2='26' />
-    <ellipse id='mediumBadRightEye' cx="475" cy="40" rx="5" ry="7" />
-    <ellipse id='mediumBadRightEyeColor' cx="475" cy="40" rx="2" ry="2.5"/>
-    <ellipse id='mediumBadMouth' cx="475" cy="60" rx="12" ry="7"  />
-    <rect id='mediumBadTorso1' width='68' height='19' x='435' y='68' />
-    <rect id='mediumBadTorso2' width='40' height='39' x='448' y='85' />
-    <line id='mediumBadHair1' x1='450' x2='440' y1='25' y2='60' />
-    <line id='mediumBadHair2' x1='450' x2='485' y1='25' y2='22' />
-    <line id='mediumBadHair3' x1='485' x2='500' y1='18' y2='55' />
+    <circle id='mediumBadFace' cx="455" cy="47" r='24'  />
+    <ellipse id='mediumBadLeftEye' cx="446" cy="40" rx="5" ry="7" />
+    <ellipse id='mediumBadLeftEyeColor' cx="446" cy="40" rx="2" ry="2.5"/>
+    <line id='mediumBadLeftEyeBrow' x1='442' x2='450' y1='29' y2='33' />
+    <line id='mediumBadRightEyeBrow' x1='457' x2='465' y1='32' y2='26' />
+    <ellipse id='mediumBadRightEye' cx="460" cy="40" rx="5" ry="7" />
+    <ellipse id='mediumBadRightEyeColor' cx="460" cy="40" rx="2" ry="2.5"/>
+    <ellipse id='mediumBadMouth' cx="460" cy="60" rx="12" ry="7"  />
+    <rect id='mediumBadTorso1' width='68' height='19' x='420' y='68' />
+    <rect id='mediumBadTorso2' width='40' height='39' x='433' y='85' />
+    <line id='mediumBadHair1' x1='435' x2='425' y1='25' y2='60' />
+    <line id='mediumBadHair2' x1='435' x2='470' y1='25' y2='22' />
+    <line id='mediumBadHair3' x1='470' x2='485' y1='18' y2='55' />
     <!-- medium bad guy end-->
     
 	  <!-- start potatoGun 1 -->
@@ -57,7 +58,7 @@
 		<rect id='tube1' width='28' height='100'  y='500' x='150'/>
 		<rect id='tubeTop1' width='28' height='15' ry='50' x='150' y='490' />
 		<text x="118" y="588" class='fireText'>Fire!</text>
-    <rect class='clear' width='40' height='37'  x='110' y='565' onclick='startBall1()' />
+    <rect id='trigger1' width='40' height='37'  x='110' y='565' />
     <!-- end potatoGun 1 -->
 
     <!-- start potatoGun 2 -->
@@ -66,7 +67,7 @@
 		<rect id='tube2' width='34' height='180'  y='440' x='250'/>
 		<rect id='tubeTop2' width='34' height='15' ry='50' x='250' y='430' />
 		<text x="215" y="585" class='fireText'>Fire!</text>
-    <rect class='clear' width='50' height='45'  x='200' y='555' onclick='startBall2()' />
+    <rect id='trigger2' width='50' height='45'  x='200' y='555' />
     <!-- end potatoGun 2 -->
     
     <!-- start potatoGun 3 -->
@@ -75,12 +76,48 @@
 		<rect id='tube3' width='40' height='200'  y='400' x='355'/>
 		<rect id='tubeTop3' width='40' height='15' ry='50' x='355' y='390' />
 		<text x="317" y="580" class='fireText'>Fire!</text>
-    <rect class='clear' width='55' height='60'  x='300' y='545' onclick='startBall3()' />
+    <rect id='trigger3' width='55' height='60'  x='300' y='545' />
     <!-- end potatoGun 3 -->
+
+
+    <!-- start potatoGun 4 -->
+    <!-- <line id='mid' x1='400' x2='400' y1='400' y2='500' /> -->
+    <line id='whiteTube4' x1='477' x2='430' y1='570' y2='480' />
+		<rect id='fire4' width='55' height='60'  x='445' y='545' rx='1' />
+		<rect id='tube4' width='40' height='200'  y='400' x='405'/>
+		<rect id='tubeTop4' width='40' height='15' ry='50' x='406' y='390' />
+		<text x="460" y="580" class='fireText'>Fire!</text>
+    <rect id='trigger4' width='55' height='60'  x='445' y='545' />
+    <!-- end potatoGun 4 -->
+
+
+    <!-- start potatoGun 5 -->
+    <line id='whiteTube5' x1='545' x2='580' y1='500' y2='570' />
+		<rect id='fire5' width='50' height='45'  x='550' y='555' rx='1' />
+		<rect id='tube5' width='34' height='180'  y='440' x='517'/>
+		<rect id='tubeTop5' width='34' height='15' ry='50' x='517' y='430' />
+		<text x="563" y="585" class='fireText'>Fire!</text>
+    <rect id='trigger5' width='50' height='45'  x='550' y='555' />
+    <!-- end potatoGun 5 -->
+
+
+	  <!-- start potatoGun 6 -->
+    <line id='whiteTube6' x1='645' x2='675' y1='520' y2='580' />
+		<rect id='fire6' width='40' height='37'  x='650' y='565' rx='1' />
+		<rect id='tube6' width='28' height='100'  y='500' x='623'/>
+		<rect id='tubeTop6' width='28' height='15' ry='50' x='623' y='490' />
+		<text x="658" y="588" class='fireText'>Fire!</text>
+    <rect id='trigger6' width='40' height='37'  x='650' y='565' />
+    <!-- end potatoGun 6 -->
+    <circle id='ball6' r='8' cx='637' cy='493'/>
+    <circle id='ball5' r='12' cx='534' cy='429'/>
+    <circle id='ball4' r='15' cx='426' cy='387'/>
     <circle id='ball3' r='15' cx='375' cy='387'/>
 	  <circle id='ball2' r='12' cx='267' cy='429'/>
 		<circle id='ball1' r='8' cx='164' cy='493'/>
-	
+	  <rect id='startRect' width='150' height='45' rx='10'  x='330' y='220' />
+	  <text id='startText' x='364' y='248'>Start Game</text>
+	  <rect class='clear' width='150' height='45' rx='10'  x='330' y='220'onclick='game()' />
 	  <clipPath id="myClip" >
       <rect = x='0' y='0' width='800' height='600'/>
 	  </clipPath>
@@ -89,3 +126,29 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

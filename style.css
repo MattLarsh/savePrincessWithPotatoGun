@@ -4,6 +4,13 @@
 body{
 	background: #267B93;
 }
+#startRect{
+	fill: #267B93;
+}
+#startText{
+	stroke: white;
+	font-family: 'Open Sans';	
+}
 #background{
   fill: #272822;
 }
@@ -23,11 +30,35 @@ body{
 #tube3{
 	fill: #1EA602;
 }
+#tube4{
+	fill: #1EA602;
+}
+#tube5{
+	fill: #1EA602;
+}
+#tube6{
+	fill: #1EA602;
+}
 #tubeTop2{
 	fill: #1EA602;
 	stroke: black;
 }
 #tubeTop3{
+	fill: #1EA602;
+	stroke: black;
+}
+#mid{
+	stroke: white;
+}
+#tubeTop4{
+	fill: #1EA602;
+	stroke: black;
+}
+#tubeTop5{
+	fill: #1EA602;
+	stroke: black;
+}
+#tubeTop6{
 	fill: #1EA602;
 	stroke: black;
 }
@@ -43,10 +74,28 @@ body{
 #ball3{
 	fill: white;
 }
+#ball4{
+	fill: white;
+}
+#ball5{
+	fill: white;
+}
+#ball6{
+	fill: white;
+}
 #fire2{
 	fill: red;
 }
 #fire3{
+	fill: red;
+}
+#fire4{
+	fill: red;
+}
+#fire5{
+	fill: red;
+}
+#fire6{
 	fill: red;
 }
 #ball2{
@@ -166,6 +215,24 @@ body{
 .clear{
 	opacity: 0;
 }
+#trigger1{
+	opacity: 0;
+}
+#trigger2{
+	opacity: 0;
+}
+#trigger3{
+	opacity: 0;
+}
+#trigger4{
+	opacity: 0;
+}
+#trigger5{
+	opacity: 0;
+}
+#trigger6{
+	opacity: 0;
+}
 #whiteTube1{
 	stroke: white;
 	stroke-width: 8;
@@ -177,4 +244,16 @@ body{
 #whiteTube3{
 	stroke: white;
 	stroke-width: 15;
+}
+#whiteTube4{
+	stroke: white;
+	stroke-width: 15;
+}
+#whiteTube5{
+	stroke: white;
+	stroke-width: 12;
+}
+#whiteTube6{
+	stroke: white;
+	stroke-width: 8;
 }

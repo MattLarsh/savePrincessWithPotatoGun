@@ -1,4 +1,5 @@
 
+function game(){
 var boxWidth = field.viewBox.baseVal.width;
 var boxHeight = field.viewBox.baseVal.height;
 var princess = {};
@@ -106,6 +107,42 @@ var rightHair = tilted('rightHair');
 var ball1 = ball('ball1');
 var ball2 = ball('ball2');
 var ball3 = ball('ball3');
+var ball4 = ball('ball4');
+var ball5 = ball('ball5');
+var ball6 = ball('ball6');
+var trigger1 = document.getElementById('trigger1');
+trigger1.onclick = function(){
+  startBall1();
+};
+var trigger2 = document.getElementById('trigger2');
+trigger2.onclick = function(){
+  startBall2();
+};
+var trigger3 = document.getElementById('trigger3');
+trigger3.onclick = function(){
+  startBall3();
+};
+var trigger4 = document.getElementById('trigger4');
+trigger4.onclick = function(){
+  startBall4();
+};
+var trigger5 = document.getElementById('trigger5');
+trigger5.onclick = function(){
+  startBall5();
+};
+var trigger6 = document.getElementById('trigger6');
+trigger6.onclick = function(){
+  startBall6();
+};
+
+
+
+
+
+
+
+
+
 var face = ball('face');
 var leftEye = elipse('leftEye');
 var rightEye = elipse('rightEye');
@@ -152,13 +189,22 @@ mediumBad.state = 'alive';
 var animateList = [mediumBadHair1,mediumBadHair2,mediumBadHair3,mediumBadTorso1,mediumBadTorso2,mediumBadRightEyeBrow,mediumBadLeftEyeBrow,mediumBadFace,mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor,smallBadMouth,smallBadRightEyeColor,smallBadLeftEyeColor,smallBadRightEye,smallBadLeftEye,smallBadFace,smallBadTorso2,smallBadTorso1,surfBoard, torso1, torso2, leftMouth, rightMouth,rightHair,leftHair,face,leftEye,rightEye,rightEyeColor,leftEyeColor];
 
 function startBall1(){
-  ball1.dy = -5;
+  ball1.dy = -5.5;
 }
 function startBall2(){
-  ball2.dy = -3.5;
+  ball2.dy = -4;
 }
 function startBall3(){
   ball3.dy = -3;
+}
+function startBall4(){
+  ball4.dy = -3;
+}
+function startBall5(){
+  ball5.dy = -4;
+}
+function startBall6(){
+  ball6.dy = -5.5;
 }
 var deflectFactor = .1;
 function collideBallWith(ball,what,freezeFunc) {
@@ -231,12 +277,12 @@ function freezeMediumBad(){
 function explodePrincess(){
   for(var i=0;i<princess.eyes.length;i++){
     if(Math.random() > 0.5){
-      princess.eyes[i].dx = 10 * Math.random();
-      princess.eyes[i].dy = 10 * Math.random();
+      princess.eyes[i].dx = 0.25 * Math.random();
+      princess.eyes[i].dy = 0.25 * Math.random();
     }
     else{
-      princess.eyes[i].dx = -10 * Math.random();
-      princess.eyes[i].dy = -10 * Math.random();
+      princess.eyes[i].dx = -2 * Math.random();
+      princess.eyes[i].dy = -2 * Math.random();
     }
   }
   setTimeout(princessRemove,4000);
@@ -244,12 +290,12 @@ function explodePrincess(){
 function explodeSmallBad(){
   for(var i=0;i<smallBad.eyes.length;i++){
     if(Math.random() > 0.5){
-      smallBad.eyes[i].dx = 9 * Math.random();
-      smallBad.eyes[i].dy = 9 * Math.random();
+      smallBad.eyes[i].dx = 7 * Math.random();
+      smallBad.eyes[i].dy = 7 * Math.random();
     }
     else{
-      smallBad.eyes[i].dx = -10 * Math.random();
-      smallBad.eyes[i].dy = -10 * Math.random();
+      smallBad.eyes[i].dx = -7 * Math.random();
+      smallBad.eyes[i].dy = -7 * Math.random();
     }
   }
   setTimeout(smallBadRemove,4000);
@@ -309,6 +355,9 @@ var animate = function(){
   ball1.cy += ball1.dy;
   ball2.cy += ball2.dy;
   ball3.cy += ball3.dy;
+  ball4.cy += ball4.dy;
+  ball5.cy += ball5.dy;
+  ball6.cy += ball6.dy;
   var i;
   for(i=0;i<animateListLength;i++){
     animateList[i].cx += animateList[i].dx;
@@ -344,18 +393,27 @@ var animate = function(){
   collideBallWith(ball1,mediumBadFace,freezeMediumBad);
   collideBallWith(ball2,mediumBadFace,freezeMediumBad);
   collideBallWith(ball3,mediumBadFace,freezeMediumBad);
+  collideBallWith(ball4,mediumBadFace,freezeMediumBad);
+  collideBallWith(ball5,mediumBadFace,freezeMediumBad);
+  collideBallWith(ball6,mediumBadFace,freezeMediumBad);
   collideBallWith(ball1,smallBadFace,freezeSmallBad);
   collideBallWith(ball2,smallBadFace,freezeSmallBad);
   collideBallWith(ball3,smallBadFace,freezeSmallBad);
+  collideBallWith(ball4,smallBadFace,freezeSmallBad);
+  collideBallWith(ball5,smallBadFace,freezeSmallBad);
+  collideBallWith(ball6,smallBadFace,freezeSmallBad);
   collideBallWith(ball1,face,freezePrincess);
   collideBallWith(ball2,face,freezePrincess);
   collideBallWith(ball3,face,freezePrincess);
+  collideBallWith(ball4,face,freezePrincess);
+  collideBallWith(ball5,face,freezePrincess);
+  collideBallWith(ball6,face,freezePrincess);
   requestAnimationFrame(animate);
 };
 
 requestAnimationFrame(animate);
 
-
+};
 
 
 

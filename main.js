@@ -105,6 +105,7 @@ var leftHair = tilted('leftHair');
 var rightHair = tilted('rightHair');
 var ball1 = ball('ball1');
 var ball2 = ball('ball2');
+var ball3 = ball('ball3');
 var face = ball('face');
 var leftEye = elipse('leftEye');
 var rightEye = elipse('rightEye');
@@ -155,6 +156,9 @@ function startBall1(){
 }
 function startBall2(){
   ball2.dy = -3.5;
+}
+function startBall3(){
+  ball3.dy = -3;
 }
 var deflectFactor = .1;
 function collideBallWith(ball,what,freezeFunc) {
@@ -304,6 +308,7 @@ var animate = function(){
   }
   ball1.cy += ball1.dy;
   ball2.cy += ball2.dy;
+  ball3.cy += ball3.dy;
   var i;
   for(i=0;i<animateListLength;i++){
     animateList[i].cx += animateList[i].dx;
@@ -338,10 +343,13 @@ var animate = function(){
   }
   collideBallWith(ball1,mediumBadFace,freezeMediumBad);
   collideBallWith(ball2,mediumBadFace,freezeMediumBad);
+  collideBallWith(ball3,mediumBadFace,freezeMediumBad);
   collideBallWith(ball1,smallBadFace,freezeSmallBad);
   collideBallWith(ball2,smallBadFace,freezeSmallBad);
+  collideBallWith(ball3,smallBadFace,freezeSmallBad);
   collideBallWith(ball1,face,freezePrincess);
   collideBallWith(ball2,face,freezePrincess);
+  collideBallWith(ball3,face,freezePrincess);
   requestAnimationFrame(animate);
 };
 

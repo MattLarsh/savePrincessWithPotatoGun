@@ -20,7 +20,14 @@ body{
 #tube2{
 	fill: #1EA602;
 }
+#tube3{
+	fill: #1EA602;
+}
 #tubeTop2{
+	fill: #1EA602;
+	stroke: black;
+}
+#tubeTop3{
 	fill: #1EA602;
 	stroke: black;
 }
@@ -33,7 +40,13 @@ body{
 #ball1{
 	fill: white;
 }
+#ball3{
+	fill: white;
+}
 #fire2{
+	fill: red;
+}
+#fire3{
 	fill: red;
 }
 #ball2{
@@ -144,4 +157,24 @@ body{
 #mediumBadHair3{
 	stroke: brown;
 	stroke-width: 7;
+}
+.fireText{
+	fill: white;
+	font-size: 12px;
+  font-family: Georgia;
+}
+.clear{
+	opacity: 0;
+}
+#whiteTube1{
+	stroke: white;
+	stroke-width: 8;
+}
+#whiteTube2{
+	stroke: white;
+	stroke-width: 12;
+}
+#whiteTube3{
+	stroke: white;
+	stroke-width: 15;
 }

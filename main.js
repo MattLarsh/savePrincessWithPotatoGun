@@ -70,10 +70,6 @@ function tryAgain(){
 
 
 
-
-
-
-
 var begin = function(){
   game();
 };
@@ -83,6 +79,7 @@ function game(){
   var princess = {};
   var smallBad = {};
   var mediumBad = {};
+  var bigBad = {};
   var ball = function(id){
     var e = document.getElementById(id);
     var r = {};
@@ -189,7 +186,7 @@ function game(){
   var ball5 = ball('ball5');
   var ball6 = ball('ball6');
   var myball = document.getElementById('ball1');
-  console.log(myball);
+
   var trigger1 = document.getElementById('trigger1');
   trigger1.onclick = function(){
     startBall1();
@@ -259,29 +256,47 @@ function game(){
   var mediumBadHair3 = line('mediumBadHair3');
   mediumBad.eyes = [mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor];
   mediumBad.state = 'alive';
+  // medium bad end
+  // big bad start
+  var bigBadFace = ball('bigBadFace');
+  var bigBadLeftEye = elipse('bigBadLeftEye');
+  var bigBadRightEye = elipse('bigBadRightEye');
+  var bigBadLeftEyeColor = elipse('bigBadLeftEyeColor');
+  var bigBadRightEyeColor = elipse('bigBadRightEyeColor');
+  var bigBadMouth = elipse('bigBadMouth');
+  var bigBadLeftEyeBrow = line('bigBadLeftEyeBrow');
+  var bigBadRightEyeBrow = line('bigBadRightEyeBrow');
+  var bigBadTorso1 = line('bigBadTorso1');
+  var bigBadTorso2 = line('bigBadTorso2');
+  var bigBadHair1 = line('bigBadHair1');
+  var bigBadHair2 = line('bigBadHair2');
+  var bigBadHair3 = line('bigBadHair3');
+  var bigBadHair4 = line('bigBadHair4');
+  bigBad.eyes = [bigBadMouth,bigBadRightEye,bigBadRightEyeColor,bigBadLeftEye,bigBadLeftEyeColor];
+  bigBad.state = 'alive';
+  // big bad end
 
 
 
-
-  var animateList = [mediumBadHair1,mediumBadHair2,mediumBadHair3,mediumBadTorso1,mediumBadTorso2,mediumBadRightEyeBrow,mediumBadLeftEyeBrow,mediumBadFace,mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor,smallBadMouth,smallBadRightEyeColor,smallBadLeftEyeColor,smallBadRightEye,smallBadLeftEye,smallBadFace,smallBadTorso2,smallBadTorso1,surfBoard, torso1, torso2, leftMouth, rightMouth,rightHair,leftHair,face,leftEye,rightEye,rightEyeColor,leftEyeColor];
+  var animateList = [bigBadMouth,bigBadRightEye,bigBadRightEyeColor,bigBadLeftEye,bigBadLeftEyeColor,bigBadFace,mediumBadTorso1,mediumBadTorso2,mediumBadFace,mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor,smallBadMouth,smallBadRightEyeColor,smallBadLeftEyeColor,smallBadRightEye,smallBadLeftEye,smallBadFace,smallBadTorso2,smallBadTorso1,surfBoard, torso1, torso2, leftMouth, rightMouth,rightHair,leftHair,face,leftEye,rightEye,rightEyeColor,leftEyeColor];
 
   function startBall1(){
-    ball1.dy = -5.5;
+    ball1.dy = -7.5;
   }
   function startBall2(){
-    ball2.dy = -4;
+    ball2.dy = -5;
   }
   function startBall3(){
-    ball3.dy = -3;
+    ball3.dy = -4;
   }
   function startBall4(){
-    ball4.dy = -3;
+    ball4.dy = -4;
   }
   function startBall5(){
-    ball5.dy = -4;
+    ball5.dy = -5;
   }
   function startBall6(){
-    ball6.dy = -5.5;
+    ball6.dy = -7.5;
   }
   var deflectFactor = .1;
   function collideBallWith(ball,what,freezeFunc) {
@@ -308,8 +323,13 @@ function game(){
     }
   }
 
-
-  var dir = 'left';
+  var dir;
+  if(Math.random() > .5){
+    dir = 'left';
+  }
+  else{
+    dir = 'right';
+  }
   var animateListLength = animateList.length;
 
   function freezePrincess(){
@@ -403,7 +423,8 @@ function game(){
   smallBad.pieces = [smallBadLeftEyeBrow,smallBadRightEyeBrow,smallBadMouth,smallBadRightEyeColor,smallBadLeftEyeColor,smallBadRightEye,smallBadLeftEye,smallBadFace,smallBadTorso2,smallBadTorso1];
   mediumBad.strings = ['mediumBadHair1','mediumBadHair2','mediumBadHair3','mediumBadTorso1','mediumBadTorso2','mediumBadLeftEyeBrow','mediumBadRightEyeBrow','mediumBadFace','mediumBadMouth','mediumBadRightEye','mediumBadRightEyeColor','mediumBadLeftEye','mediumBadLeftEyeColor'];
   mediumBad.pieces = [mediumBadHair1,mediumBadHair2,mediumBadHair3,mediumBadTorso1,mediumBadTorso2,mediumBadLeftEyeBrow,mediumBadRightEyeBrow,mediumBadFace,mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor];
-
+  bigBad.strings = ['bigBadTorso2','bigBadTorso1','bigBadHair4','bigBadHair3','bigBadHair2','bigBadHair1','bigBadRightEyeBrow','bigBadLeftEyeBrow','bigBadFace','bigBadMouth','bigBadRightEye','bigBadRightEyeColor','bigBadLeftEye','bigBadLeftEyeColor'];
+  bigBad.pieces = [bigBadTorso2,bigBadTorso1,bigBadHair4,bigBadHair3,bigBadHair2,bigBadHair1,bigBadRightEyeBrow,bigBadLeftEyeBrow,bigBadFace,bigBadMouth,bigBadRightEye,bigBadRightEyeColor,bigBadLeftEye,bigBadLeftEyeColor];
   function princessRemove(){
     for(var i=0;i<princess.strings.length;i++){
       var one = document.getElementById(princess.strings[i]);
@@ -426,7 +447,8 @@ function game(){
       one.remove();
     }
   }
-  var lineList = [mediumBadHair1,mediumBadHair2,mediumBadHair3,smallBadRightEyeBrow,smallBadLeftEyeBrow,mediumBadLeftEyeBrow,mediumBadRightEyeBrow];
+  var speed = 4;
+  var lineList = [bigBadTorso2,bigBadTorso1,bigBadHair4,bigBadHair3,bigBadHair2,bigBadHair1,bigBadRightEyeBrow,bigBadLeftEyeBrow,mediumBadHair1,mediumBadHair2,mediumBadHair3,smallBadRightEyeBrow,smallBadLeftEyeBrow,mediumBadLeftEyeBrow,mediumBadRightEyeBrow];
   var lineListLength = lineList.length;
   var animate = function(){
     if(princess.state === 'alive'){
@@ -454,18 +476,19 @@ function game(){
       ball5.cy += ball5.dy;
       ball6.cy += ball6.dy;
       var i;
+      
       for(i=0;i<animateListLength;i++){
         animateList[i].cx += animateList[i].dx;
         animateList[i].cy += animateList[i].dy;
       }
       if(dir === 'right'){
         for(i=0;i<animateListLength;i++){
-          animateList[i].dx = 2.5;
+          animateList[i].dx = 5;
         }
       }
       if(dir === 'left'){
         for(i=0;i<animateListLength;i++){
-          animateList[i].dx = -2.5;
+          animateList[i].dx = -5;
 
         }
       }
@@ -475,14 +498,14 @@ function game(){
       }
       if(dir === 'right'){
         for(i=0;i<lineListLength;i++){
-          lineList[i].dx1 = 2.5;
-          lineList[i].dx2 = 2.5;
+          lineList[i].dx1 = 5;
+          lineList[i].dx2 = 5;
         }
       }
       if(dir === 'left'){
         for(i=0;i<lineListLength;i++){
-          lineList[i].dx1 = -2.5;
-          lineList[i].dx2 = -2.5;
+          lineList[i].dx1 = -5;
+          lineList[i].dx2 = -5;
         }
       }
       
@@ -501,7 +524,7 @@ function game(){
       collideBallWith(ball5,face,freezePrincess);
       collideBallWith(ball6,face,freezePrincess);
       requestAnimationFrame(animate);
-  }
+    }
   };
 
   requestAnimationFrame(animate);

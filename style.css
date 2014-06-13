@@ -214,6 +214,53 @@ body{
 	stroke: brown;
 	stroke-width: 7;
 }
+#bigBadFace{
+	fill: #ffe1ce;
+}
+#bigBadLeftEye{
+	fill: white;
+}
+#bigBadRightEye{
+	fill: white;
+}
+#bigBadLeftEyeColor{
+	fill: #69D2FF;
+}
+#bigBadRightEyeColor{
+	fill: #69D2FF;
+}
+#bigBadLeftEyeBrow{
+	stroke: #F75758;
+	stroke-width: 3.5;
+}
+#bigBadRightEyeBrow{
+	stroke: #F75758;
+	stroke-width: 3.5;
+}
+#bigBadHair1{
+	stroke: #F1ED9D;
+	stroke-width: 8;
+}
+#bigBadHair2{
+	stroke: #F1ED9D;
+	stroke-width: 11;
+}
+#bigBadHair3{
+	stroke: #F1ED9D;
+	stroke-width: 12;
+}
+#bigBadHair4{
+	stroke: #F1ED9D;
+	stroke-width: 8;
+}
+#bigBadTorso1{
+	stroke: #3EA556;
+	stroke-width: 25;
+}
+#bigBadTorso2{
+	stroke: #3EA556;
+	stroke-width: 40;
+}
 .fireText{
 	fill: white;
 	font-size: 12px;

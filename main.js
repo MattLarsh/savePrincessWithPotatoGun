@@ -1,3 +1,79 @@
+var svgNS = "http://www.w3.org/2000/svg";
+
+function goodShot() {
+  var newText = document.createElementNS(svgNS,"text");
+  newText.setAttributeNS(null,"x",400);    
+  newText.setAttributeNS(null,"y",265);  
+  newText.setAttributeNS(null,"font-size","45px");
+  newText.setAttributeNS(null,"text-anchor","middle");
+  newText.setAttributeNS(null,"fill-opacity",0.5); 
+  newText.setAttributeNS(null,"font-family",'Open Sans');
+  newText.setAttributeNS(null,"id",'good');
+  newText.setAttributeNS(null,"fill",'green');
+  var textNode = document.createTextNode("Good Shot!");
+  newText.appendChild(textNode);
+  document.getElementById("field").appendChild(newText);
+}
+function removeElement() {
+  document.getElementById("good").remove();
+}
+function expired() {
+  var newText = document.createElementNS(svgNS,"text");
+  newText.setAttributeNS(null,"x",400);    
+  newText.setAttributeNS(null,"y",235);  
+  newText.setAttributeNS(null,"font-size","25px");
+  newText.setAttributeNS(null,"text-anchor","middle");
+  newText.setAttributeNS(null,"fill-opacity", 1); 
+  newText.setAttributeNS(null,"font-family",'Open Sans');
+  newText.setAttributeNS(null,"fill",'red');
+  var textNode = document.createTextNode("The Princess Has Been Fatally Injured!");
+  newText.appendChild(textNode);
+  document.getElementById("field").appendChild(newText);
+}
+function tryAgain(){
+  var newRect = document.createElementNS(svgNS,"rect");
+  newRect.setAttributeNS(null,"width", 150); 
+  newRect.setAttributeNS(null,"height",45);    
+  newRect.setAttributeNS(null,"x",330);   
+  newRect.setAttributeNS(null,"y",280);  
+  newRect.setAttributeNS(null,"rx",10);
+  newRect.setAttributeNS(null,"fill-opacity",1);    
+  newRect.setAttributeNS(null,"fill","#267B93");
+  document.getElementById("field").appendChild(newRect);
+  var newText = document.createElementNS(svgNS,"text");
+  newText.setAttributeNS(null,"x",405);    
+  newText.setAttributeNS(null,"y",310);  
+  newText.setAttributeNS(null,"font-size","16px");
+  newText.setAttributeNS(null,"text-anchor","middle");
+  newText.setAttributeNS(null,"fill-opacity", 1); 
+  newText.setAttributeNS(null,"font-family",'Open Sans');
+  newText.setAttributeNS(null,"fill",'white');
+  var textNode = document.createTextNode("Try Again!");
+  newText.appendChild(textNode);
+  document.getElementById("field").appendChild(newText);
+
+  var restartGame = document.createElementNS(svgNS,"rect");
+  restartGame.setAttributeNS(null,"width", 150); 
+  restartGame.setAttributeNS(null,"height",45);    
+  restartGame.setAttributeNS(null,"x",330);   
+  restartGame.setAttributeNS(null,"y",280);  
+  restartGame.setAttributeNS(null,"rx",10);
+  restartGame.setAttributeNS(null,"fill-opacity",0);    
+  restartGame.onclick = function(){
+    window.location.reload();
+  };
+  document.getElementById("field").appendChild(restartGame);
+}
+
+
+
+
+
+
+
+
+
+
 var begin = function(){
   game();
 };
@@ -112,6 +188,8 @@ function game(){
   var ball4 = ball('ball4');
   var ball5 = ball('ball5');
   var ball6 = ball('ball6');
+  var myball = document.getElementById('ball1');
+  console.log(myball);
   var trigger1 = document.getElementById('trigger1');
   trigger1.onclick = function(){
     startBall1();
@@ -276,8 +354,8 @@ function game(){
   function explodePrincess(){
     for(var i=0;i<princess.eyes.length;i++){
       if(Math.random() > 0.5){
-        princess.eyes[i].dx = 0.25 * Math.random();
-        princess.eyes[i].dy = 0.25 * Math.random();
+        princess.eyes[i].dx = 3.25 * Math.random();
+        princess.eyes[i].dy = 3.25 * Math.random();
       }
       else{
         princess.eyes[i].dx = -2 * Math.random();
@@ -285,6 +363,7 @@ function game(){
       }
     }
     setTimeout(princessRemove,4000);
+  
   }
   function explodeSmallBad(){
     for(var i=0;i<smallBad.eyes.length;i++){
@@ -298,7 +377,8 @@ function game(){
       }
     }
     setTimeout(smallBadRemove,4000);
-    
+    goodShot()
+    setTimeout(removeElement,1000);
   }
 
   function explodeMediumBad(){
@@ -313,6 +393,8 @@ function game(){
       }
     }
     setTimeout(mediumBadRemove,4000);
+    goodShot()
+    setTimeout(removeElement,1000);
   }
 
   princess.strings = ['torso1', 'torso2', 'leftMouth', 'rightMouth','rightHair','leftHair','rightEye','leftEye','rightEyeColor','leftEyeColor'];
@@ -326,6 +408,8 @@ function game(){
     for(var i=0;i<princess.strings.length;i++){
       var one = document.getElementById(princess.strings[i]);
       one.remove();
+      expired();
+      tryAgain();
     }
     // window.location.reload();
   }
@@ -344,7 +428,6 @@ function game(){
   var lineList = [mediumBadHair1,mediumBadHair2,mediumBadHair3,smallBadRightEyeBrow,smallBadLeftEyeBrow,mediumBadLeftEyeBrow,mediumBadRightEyeBrow];
   var lineListLength = lineList.length;
   var animate = function(){
-    console.log(ball2.cy);
     if(surfBoard.cx < -400){
       dir = 'right'
     }

@@ -9,8 +9,22 @@ function goodShot() {
   newText.setAttributeNS(null,"fill-opacity",0.5); 
   newText.setAttributeNS(null,"font-family",'Open Sans');
   newText.setAttributeNS(null,"id",'good');
-  newText.setAttributeNS(null,"fill",'green');
+  newText.setAttributeNS(null,"fill",'#01FF02');
   var textNode = document.createTextNode("Good Shot!");
+  newText.appendChild(textNode);
+  document.getElementById("field").appendChild(newText);
+}
+function savedPrincess() {
+  var newText = document.createElementNS(svgNS,"text");
+  newText.setAttributeNS(null,"x",400);    
+  newText.setAttributeNS(null,"y",265);  
+  newText.setAttributeNS(null,"font-size","45px");
+  newText.setAttributeNS(null,"text-anchor","middle");
+  newText.setAttributeNS(null,"fill-opacity",0.5); 
+  newText.setAttributeNS(null,"font-family",'Open Sans');
+  newText.setAttributeNS(null,"id",'good');
+  newText.setAttributeNS(null,"fill",'#01FF02');
+  var textNode = document.createTextNode("You saved the Princess!");
   newText.appendChild(textNode);
   document.getElementById("field").appendChild(newText);
 }
@@ -30,7 +44,7 @@ function expired() {
   newText.appendChild(textNode);
   document.getElementById("field").appendChild(newText);
 }
-function tryAgain(){
+function tryAgain(message){
   var newRect = document.createElementNS(svgNS,"rect");
   newRect.setAttributeNS(null,"width", 150); 
   newRect.setAttributeNS(null,"height",45);    
@@ -48,7 +62,7 @@ function tryAgain(){
   newText.setAttributeNS(null,"fill-opacity", 1); 
   newText.setAttributeNS(null,"font-family",'Open Sans');
   newText.setAttributeNS(null,"fill",'white');
-  var textNode = document.createTextNode("Try Again!");
+  var textNode = document.createTextNode(message);
   newText.appendChild(textNode);
   document.getElementById("field").appendChild(newText);
 
@@ -279,6 +293,7 @@ function game(){
 
 
   var animateList = [bigBadMouth,bigBadRightEye,bigBadRightEyeColor,bigBadLeftEye,bigBadLeftEyeColor,bigBadFace,mediumBadTorso1,mediumBadTorso2,mediumBadFace,mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor,smallBadMouth,smallBadRightEyeColor,smallBadLeftEyeColor,smallBadRightEye,smallBadLeftEye,smallBadFace,smallBadTorso2,smallBadTorso1,surfBoard, torso1, torso2, leftMouth, rightMouth,rightHair,leftHair,face,leftEye,rightEye,rightEyeColor,leftEyeColor];
+  var fakeAnimateList = ['bigBadMouth','bigBadRightEye','bigBadRightEyeColor','bigBadLeftEye','bigBadLeftEyeColor','bigBadFace','mediumBadTorso1','mediumBadTorso2','mediumBadFace','mediumBadMouth','mediumBadRightEye','mediumBadRightEyeColor','mediumBadLeftEye','mediumBadLeftEyeColor','smallBadMouth','smallBadRightEyeColor','smallBadLeftEyeColor','smallBadRightEye','smallBadLeftEye','smallBadFace','smallBadTorso2','smallBadTorso1','surfBoard', 'torso1', 'torso2', 'leftMouth', 'rightMouth','rightHair','leftHair','face','leftEye','rightEye','rightEyeColor','leftEyeColor'];
 
   function startBall1(){
     ball1.dy = -7.5;
@@ -380,8 +395,8 @@ function game(){
     }
     dir = 'stop';
     if(bigBad.state === 'alive'){
-      bigBadFace.dx = 10;
-      bigBadFace.dy = 5;
+      bigBadFace.dx = 22 * Math.random();
+      bigBadFace.dy = 6;
       bigBad.state = 'dead'
       explodeBigBad()
       
@@ -413,7 +428,9 @@ function game(){
       }
     }
     setTimeout(smallBadRemove,4000);
-    goodShot()
+    if(smallBad.state === 'alive' || mediumBad.state === 'alive' || bigBad.state === 'alive'){
+      goodShot();
+    }
     setTimeout(removeElement,1000);
   }
 
@@ -429,7 +446,9 @@ function game(){
       }
     }
     setTimeout(mediumBadRemove,4000);
-    goodShot()
+    if(smallBad.state === 'alive' || mediumBad.state === 'alive' || bigBad.state === 'alive'){
+      goodShot();
+    }
     setTimeout(removeElement,1000);
   }
   function explodeBigBad(){
@@ -444,8 +463,25 @@ function game(){
       }
     }
     setTimeout(bigBadRemove,4000);
-    goodShot()
-    animateList.splice(5,1);
+    if(smallBad.state === 'alive' || mediumBad.state === 'alive' || bigBad.state === 'alive'){
+      goodShot();
+    }
+    var bigFace = animateList.indexOf(bigBadFace);
+    animateList.splice(bigFace,1);
+    var bigLeftEye = animateList.indexOf(bigBadLeftEye);
+    animateList.splice(bigLeftEye,1);
+    var bigRightEye = animateList.indexOf(bigBadRightEye);
+    animateList.splice(bigRightEye,1);
+    var bigLeftEyeColor = animateList.indexOf(bigBadLeftEyeColor);
+    animateList.splice(bigLeftEyeColor,1);
+    var bigRightEyeColor = animateList.indexOf(bigBadRightEyeColor);
+    animateList.splice(bigRightEyeColor,1);
+    var bigMouth = animateList.indexOf(bigBadMouth);
+    animateList.splice(bigMouth,1);
+    // var bigLeftEyeBrow = animateList.indexOf(bigBadLeftEyeBrow);
+    // animateList.splice(bigLeftEyeBrow,1);
+    // var bigRightEyeBrow = animateList.indexOf(bigBadRightEyeBrow);
+    // animateList.splice(bigRightEyeBrow,1);
     animateListLength = animateList.length
     
     setTimeout(removeElement,1000);
@@ -457,14 +493,14 @@ function game(){
   smallBad.pieces = [smallBadLeftEyeBrow,smallBadRightEyeBrow,smallBadMouth,smallBadRightEyeColor,smallBadLeftEyeColor,smallBadRightEye,smallBadLeftEye,smallBadFace,smallBadTorso2,smallBadTorso1];
   mediumBad.strings = ['mediumBadHair1','mediumBadHair2','mediumBadHair3','mediumBadTorso1','mediumBadTorso2','mediumBadLeftEyeBrow','mediumBadRightEyeBrow','mediumBadFace','mediumBadMouth','mediumBadRightEye','mediumBadRightEyeColor','mediumBadLeftEye','mediumBadLeftEyeColor'];
   mediumBad.pieces = [mediumBadHair1,mediumBadHair2,mediumBadHair3,mediumBadTorso1,mediumBadTorso2,mediumBadLeftEyeBrow,mediumBadRightEyeBrow,mediumBadFace,mediumBadMouth,mediumBadRightEye,mediumBadRightEyeColor,mediumBadLeftEye,mediumBadLeftEyeColor];
-  bigBad.strings = ['bigBadTorso2','bigBadTorso1','bigBadHair4','bigBadHair3','bigBadHair2','bigBadHair1','bigBadRightEyeBrow','bigBadLeftEyeBrow','bigBadMouth','bigBadRightEye','bigBadRightEyeColor','bigBadLeftEye','bigBadLeftEyeColor'];
+  bigBad.strings = ['bigBadRightEyeBrow','bigBadLeftEyeBrow','bigBadTorso2','bigBadTorso1','bigBadHair4','bigBadHair3','bigBadHair2','bigBadHair1'];
   bigBad.pieces = [bigBadTorso2,bigBadTorso1,bigBadHair4,bigBadHair3,bigBadHair2,bigBadHair1,bigBadRightEyeBrow,bigBadLeftEyeBrow,bigBadMouth,bigBadRightEye,bigBadFace,bigBadRightEyeColor,bigBadLeftEye,bigBadLeftEyeColor];
   function princessRemove(){
     for(var i=0;i<princess.strings.length;i++){
       var one = document.getElementById(princess.strings[i]);
       one.remove();
       expired();
-      tryAgain();
+      tryAgain('Try Again!');
       princess.state = 'dead';
     }
     
@@ -507,7 +543,13 @@ function game(){
   var animSpeed = 0.1;
   var deflectFactor = 0.1;
   var animate = function(){
+    
     if(princess.state === 'alive'){
+      if(smallBad.state === 'dead' && mediumBad.state === 'dead' && bigBad.state === 'dead' ){
+        savedPrincess();
+        bigBad.state = 'dead twice';
+        tryAgain('Save Her Again?');
+      }
       if(surfBoard.cx < -400){
         dir = 'right'
       }
@@ -583,10 +625,20 @@ function game(){
         
         bigBadFace.cx += bigBadFace.dx;
         bigBadFace.cy += bigBadFace.dy;
-        
-        
+        bigBadLeftEye.cx = bigBadFace.cx-11;
+        bigBadLeftEye.cy = bigBadFace.cy-10;
+        bigBadRightEye.cx = bigBadFace.cx+11;
+        bigBadRightEye.cy = bigBadFace.cy-10;
+        bigBadLeftEyeColor.cx = bigBadFace.cx-11;
+        bigBadLeftEyeColor.cy = bigBadFace.cy-10;
+        bigBadRightEyeColor.cx = bigBadFace.cx+11;
+        bigBadRightEyeColor.cy = bigBadFace.cy-10;
+        bigBadMouth.cx = bigBadFace.cx;
+        bigBadMouth.cy = bigBadFace.cy+10;
       }
       if(bigBad.state === 'alive'){
+        collideBallWith(ball1,bigBadFace,freezeBigBad);
+        collideBallWith(ball2,bigBadFace,freezeBigBad);
         collideBallWith(ball3,bigBadFace,freezeBigBad);
         collideBallWith(ball4,bigBadFace,freezeBigBad);
         collideBallWith(ball5,bigBadFace,freezeBigBad);

@@ -1,3 +1,9 @@
+(function () {
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                                window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    window.requestAnimationFrame = requestAnimationFrame;
+})();
+
 var svgNS = "http://www.w3.org/2000/svg";
 
 function goodShot() {
